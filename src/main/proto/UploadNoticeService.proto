@@ -1,0 +1,19 @@
+  syntax = "proto3";
+  package grpc;
+
+  service UploadNoticeService {
+    rpc doProcessUploadedImageAndVideo(ProcessingRequest) returns (ProcessingResponse);
+  }
+
+  message ProcessingRequest {
+    int64 uploadId = 1;
+  }
+
+  message ProcessingResponse {
+    enum Result {
+      OK = 0;
+      ERROR = 1;
+    }
+    Result result = 1;
+    int64 uploadId = 2;
+  }
